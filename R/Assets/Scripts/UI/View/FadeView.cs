@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ public class FadeView : MonoBehaviour
     [SerializeField]
     private float fadeTime;
 
-    public void FadeIn()
+    public UniTask FadeIn()
     {
         Fade(0.0f, fadeTime);
     }
