@@ -12,8 +12,11 @@ public class SceneController : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public static void ChangeScene(string sceneName)
+    public static async void ChangeScene(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName);
+        await FadeController.Instance.FadeOutAsync();
+        await SceneManager.LoadSceneAsync(sceneName);
+        await WorldInitializer.Instance.InitializeWorld();
+        await FadeController.Instance.FadeInAsync();
     }
 }
